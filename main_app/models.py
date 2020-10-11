@@ -36,20 +36,20 @@ class Training(models.Model):
     description = models.CharField(max_length=100)
     date = models.DateField(default=date.today)
     duration = models.IntegerField("Duration (minutes)")
-    completed = models.BooleanField
+    completed = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.drill}, {self.date}"
 
 
 class Team(models.Model):
-    name: models.CharField(max_length=80)
-    league: models.CharField(max_length=30)
-    division: models.CharField(max_length=10)
+    name = models.CharField(max_length=80)
+    league = models.CharField(max_length=30)
+    division = models.CharField(max_length=10)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.user.username} coaches for {self.team.name}"
+        return f"{self.name} coached by {self.user.username}"
 
 
 class Player(models.Model):
@@ -65,7 +65,7 @@ class Player(models.Model):
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.player.name} plays for {self.team.name}"
+        return f"{self.last_name} plays for {self.team.name}"
 
     class Meta:
         ordering = ['kitNumber']
@@ -84,4 +84,4 @@ class Stat(models.Model):
         ordering = ['-date']
 
     def __str__(self):
-        return f"{self.player.name} scored {self.goals} for {self.team.name}"
+        return f"{self.player.last_name} scored {self.goals} for {self.player.team.name}"
