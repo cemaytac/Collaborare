@@ -21,8 +21,9 @@
           <li><a href="/">&nbsp;&nbsp;Collaborare</a></li>
         </ul>
         <ul>
-          <li><a href="/about">About</a></li>
-          <li><a href="/players">View All My Players</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'index' %}">View All My Players</a></li>
+          <li><a href="{% url 'players_create' %}">Add a Player</a></li>
         </ul>
       </div>
     </nav>

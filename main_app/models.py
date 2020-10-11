@@ -49,7 +49,7 @@ class Team(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.name} coached by {self.user.username}"
+        return f"{self.name}"
 
 
 class Player(models.Model):
@@ -69,6 +69,9 @@ class Player(models.Model):
 
     class Meta:
         ordering = ['kitNumber']
+
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'player_id': self.id})
 
 
 class Stat(models.Model):

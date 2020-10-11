@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 from .models import Player
 
 # Create your views here.
@@ -15,3 +16,14 @@ def about(request):
 def players_index(request):
     players = Player.objects.all()
     return render(request, 'players/index.html', {'players': players})
+
+
+def players_detail(request, player_id):
+    player = Player.objects.get(id=player_id)
+    return render(request, 'players/detail.html', {'player': player})
+
+
+class PlayerCreate(CreateView):
+    model = Player
+    fields = ['first_name', 'last_name', 'age', 'kitNumber',
+              'position', 'preferredFoot', 'team']
