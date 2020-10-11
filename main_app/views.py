@@ -9,3 +9,7 @@ def home(request):
 
 def about(request):
     return render(request, 'about.html')
+
+
+def players_index(request):
+    return render(request, 'players/index.html', {'players': players})
