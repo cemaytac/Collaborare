@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Player
 
 # Create your views here.
 
@@ -12,4 +13,5 @@ def about(request):
 
 
 def players_index(request):
+    players = Player.objects.all()
     return render(request, 'players/index.html', {'players': players})
