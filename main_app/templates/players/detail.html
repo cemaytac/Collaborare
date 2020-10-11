@@ -6,7 +6,7 @@
 <div class="card">
   <div class="card-content">
     <span class="card-title" id='player-title'>
-      <h2>{{ player.name }}</h2>
+      <h1>{{ player.last_name }}</h1>
       <h2>Kit Number: {{player.kitNumber}}</h2>
     </span>
     <div class='container-div'>
@@ -15,6 +15,14 @@
         <h3>Position: {{ player.position }}</h3>
         <h3>Preferred Foot: {{ player.preferredFoot }}</h3>
       </div>
+      <div class='action-container'>
+        <div class="card-action">
+          <a href="{% url 'players_update' player.id %}">Edit</a>
+          <a href="{% url 'players_delete' player.id %}">Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-
-      {% endblock %}
+{% endblock %}
