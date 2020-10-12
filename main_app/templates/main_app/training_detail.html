@@ -10,6 +10,10 @@
         <p>Description: {{training.description}}</p>
         <p>Completed? {{training.completed}}</p>
       </div>
+      <div class="card-action">
+        <a href="{% url 'training_update' training.id %}">Edit</a>
+        <a href="{% url 'training_delete' training.id %}">Delete</a>
+      </div>
     </div>
   </div>
 </div>

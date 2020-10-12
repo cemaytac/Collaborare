@@ -63,3 +63,13 @@ class TrainingDetail(DetailView):
 class TrainingCreate(CreateView):
     model = Training
     fields = '__all__'
+
+
+class TrainingUpdate(UpdateView):
+    model = Training
+    fields = ['drill', 'date', 'description', 'duration', 'completed', ]
+
+
+class TrainingDelete(DeleteView):
+    model = Training
+    success_url = '/training/'
