@@ -40,7 +40,7 @@ class Training(models.Model):
     completed = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"{self.drill}, {self.date}"
+        return f"{self.drill} Training, {self.date}"
 
     def get_absolute_url(self):
         return reverse('training_detail', kwargs={'pk': self.id})

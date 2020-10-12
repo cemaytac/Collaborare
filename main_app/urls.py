@@ -13,6 +13,8 @@ urlpatterns = [
          views.PlayerDelete.as_view(), name='players_delete'),
     path('players/<int:player_id>/add_stats',
          views.add_stats, name='add_stats'),
+    # path('players/<int:player_id>/delete_stats/',
+    #      views.delete_stats, name='delete_stats'),
     path('training/', views.TrainingList.as_view(), name='training_index'),
     path('training/<int:pk>/', views.TrainingDetail.as_view(),
          name='training_detail'),
@@ -22,4 +24,6 @@ urlpatterns = [
          views.TrainingUpdate.as_view(), name='training_update'),
     path('training/<int:pk>/delete/',
          views.TrainingDelete.as_view(), name='training_delete'),
+    path('players/<int:player_id>/player_training/<int:training_id>/',
+         views.player_training, name='player_training'),
 ]

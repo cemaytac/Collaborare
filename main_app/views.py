@@ -22,8 +22,10 @@ def players_index(request):
 
 def players_detail(request, player_id):
     player = Player.objects.get(id=player_id)
+    training_player_doesnt_have = Training.objects.exclude(
+        id__in=player.training.all().values_list('id'))
     stat_form = StatForm()
-    return render(request, 'players/detail.html', {'player': player, 'stat_form': stat_form})
+    return render(request, 'players/detail.html', {'player': player, 'stat_form': stat_form, 'training': training_player_doesnt_have})
 
 
 def add_stats(request, player_id):
@@ -34,7 +36,6 @@ def add_stats(request, player_id):
         new_stats.save()
     return redirect('detail', player_id=player_id)
 
-
 class PlayerCreate(CreateView):
     model = Player
     fields = ['first_name', 'last_name', 'age', 'kitNumber',
@@ -43,8 +44,7 @@ class PlayerCreate(CreateView):
 
 class PlayerUpdate(UpdateView):
     model = Player
-    fields = ['first_name', 'last_name', 'age', 'kitNumber',
-              'position', 'preferredFoot', 'team']
+    fields = '__all__'
 
 
 class PlayerDelete(DeleteView):
@@ -73,3 +73,8 @@ class TrainingUpdate(UpdateView):
 class TrainingDelete(DeleteView):
     model = Training
     success_url = '/training/'
+
+
+def player_training(request, player_id, training_id):
+    Player.objects.get(id=player_id).training.add(training_id)
+    return redirect('detail', player_id=player_id)

@@ -2,7 +2,7 @@
 
 {% block content %}
 {% if object %}
-<h1>Edit <span>Cem</span></h1>
+<h1>Edit <span>{{object.last_name}}</span></h1>
 {% else %}
 <h1>Add Player</h1>
 {% endif %}
@@ -14,7 +14,7 @@
     {{ form.as_table }}
   </table>
   <input type="submit" value="Submit!" class="btn">
-  <a href="{% url 'detail' player.id %}">Cancel</a>
+  <a href="{% url 'index' %}">Cancel</a>
 </form>
 
 {% endblock %}

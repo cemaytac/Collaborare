@@ -70,5 +70,27 @@
     <h5>No training scheduled yet</h5>
     {% endif %}
   </div>
-
-  {% endblock %}
+  <div class="container">
+    <h3>All Scheduled Trainings</h3>
+    {% if training.count %}
+    {% for training in training.all %}
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">
+          {{ training.drill }}
+        </span>
+      </div>
+    </div>
+    <div class="form-group">
+      <form action="{% url 'player_training' player.id training.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn">Add</button>
+      </form>
+    </div>
+  </div>
+  {% endfor %}
+  {% else %}
+  <h5>{{player.last_name}} is already scheduled for all training drills.</h5>
+  {% endif %}
+</div>
+{% endblock %}
