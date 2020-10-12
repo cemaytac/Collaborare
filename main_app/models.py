@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Sum, Avg, Count
 from django.contrib.auth.models import User
 from django.urls import reverse
 from datetime import date

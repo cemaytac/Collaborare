@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Player
+from .forms import StatForm
 
 # Create your views here.
 
@@ -20,7 +21,17 @@ def players_index(request):
 
 def players_detail(request, player_id):
     player = Player.objects.get(id=player_id)
-    return render(request, 'players/detail.html', {'player': player})
+    stat_form = StatForm()
+    return render(request, 'players/detail.html', {'player': player, 'stat_form': stat_form})
+
+
+def add_stats(request, player_id):
+    form = StatForm(request.POST)
+    if form.is_valid():
+        new_stats = form.save(commit=False)
+        new_stats.player_id = player_id
+        new_stats.save()
+    return redirect('detail', player_id=player_id)
 
 
 class PlayerCreate(CreateView):

@@ -11,4 +11,6 @@ urlpatterns = [
          views.PlayerUpdate.as_view(), name='players_update'),
     path('players/<int:pk>/delete/',
          views.PlayerDelete.as_view(), name='players_delete'),
+    path('players/<int:player_id>/add_stats',
+         views.add_stats, name='add_stats'),
 ]
