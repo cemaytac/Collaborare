@@ -21,8 +21,8 @@
           <li><a href="/">&nbsp;&nbsp;Collaborare</a></li>
         </ul>
         <ul>
-          <li><a href="{% url 'about' %}">About</a></li>
-          <li><a href="{% url 'index' %}">View All My Players</a></li>
+          <li><a href="{% url 'training_index' %}">View All Scheduled Trainings</a></li>
+          <li><a href="{% url 'index' %}">My Squad</a></li>
           <li><a href="{% url 'players_create' %}">Add a Player</a></li>
         </ul>
       </div>
@@ -33,6 +33,7 @@
     {% endblock %}
   </main>
   <footer class="page-footer">
+    <ul><a href="{% url 'about' %}">About</a></ul>
     <div class="right">All Rights Reserved, &copy; 2020 Collaborare &nbsp;</div>
   </footer>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

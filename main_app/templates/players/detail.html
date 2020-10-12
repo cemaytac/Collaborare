@@ -53,5 +53,22 @@
   </table>
 </div>
 <hr>
+<div class="container">
+  <div class="col s6">
+    <h3>{{ player.last_name }}'s Training</h3>
+    {% if player.training.count %}
+    {% for training in player.training.all %}
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">
+          {{ training.drill }}
+        </span>
+      </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <h5>No training scheduled yet</h5>
+    {% endif %}
+  </div>
 
-{% endblock %}
+  {% endblock %}
