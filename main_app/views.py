@@ -54,3 +54,7 @@ class PlayerDelete(DeleteView):
 
 class TrainingList(ListView):
     model = Training
+
+
+class TrainingDetail(DetailView):
+    model = Training

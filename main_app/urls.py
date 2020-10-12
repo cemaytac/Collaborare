@@ -14,4 +14,6 @@ urlpatterns = [
     path('players/<int:player_id>/add_stats',
          views.add_stats, name='add_stats'),
     path('training/', views.TrainingList.as_view(), name='training_index'),
+    path('training/<int:pk>/', views.TrainingDetail.as_view(),
+         name='training_detail'),
 ]
