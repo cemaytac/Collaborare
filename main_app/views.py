@@ -58,3 +58,8 @@ class TrainingList(ListView):
 
 class TrainingDetail(DetailView):
     model = Training
+
+
+class TrainingCreate(CreateView):
+    model = Training
+    fields = '__all__'

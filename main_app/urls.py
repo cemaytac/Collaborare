@@ -16,4 +16,6 @@ urlpatterns = [
     path('training/', views.TrainingList.as_view(), name='training_index'),
     path('training/<int:pk>/', views.TrainingDetail.as_view(),
          name='training_detail'),
+    path('training/create/', views.TrainingCreate.as_view(),
+         name='training_create'),
 ]
