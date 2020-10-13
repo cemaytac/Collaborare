@@ -50,7 +50,7 @@ class Team(models.Model):
     name = models.CharField(max_length=80)
     league = models.CharField(max_length=30)
     division = models.CharField(max_length=10)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.name}"

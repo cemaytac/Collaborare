@@ -82,7 +82,7 @@
       </div>
     </div>
     <div class="form-group">
-      <form action="{% url 'player_training' player.id training.id %}" method="post">
+      <form action="{% url 'assoc_training' player.id training.id %}" method="post">
         {% csrf_token %}
         <button type="submit" class="btn">Add</button>
       </form>

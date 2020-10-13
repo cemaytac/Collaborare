@@ -21,10 +21,17 @@
           <li><a href="/">&nbsp;&nbsp;Collaborare</a></li>
         </ul>
         <ul>
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'index' %}">My Squad</a></li>
+          <li><a href="{% url 'team_index' %}">My Team</a></li>
           <li><a href="{% url 'training_index' %}">View All Scheduled Trainings</a></li>
           <li><a href="{% url 'training_create' %}">Add Training Drill</a></li>
-          <li><a href="{% url 'index' %}">My Squad</a></li>
           <li><a href="{% url 'players_create' %}">Add a Player</a></li>
+          <li><a href="{% url 'logout' %}">Log Out</a></li>
+          {% else %}
+          <li><a href="{% url 'signup' %}">Sign Up</a></li>
+          <li><a href="{% url 'login' %}">Log In</a></li>
+          {% endif %}
         </ul>
       </div>
     </nav>
