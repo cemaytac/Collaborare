@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
 from .models import Player, Training, Team
-from .forms import StatForm
+from .forms import StatForm, SignupForm
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -14,8 +14,6 @@ from django.contrib.auth.forms import UserCreationForm
 def signup(request):
     error_message = ''
     if request.method == 'POST':
-        # This is how to create a 'user' form object
-        # that includes the data from the browser
         form = UserCreationForm(request.POST)
         if form.is_valid():
             # This will add the user to the database
@@ -26,8 +24,8 @@ def signup(request):
         else:
             error_message = 'Invalid sign up - try again'
     # A bad POST or a GET request, so render signup.html with an empty form
-    form = UserCreationForm()
-    context = {'form': form, 'error_message': error_message}
+    signupform = SignupForm()
+    context = {'signupform': signupform, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
 
@@ -43,7 +41,7 @@ def about(request):
 def team_index(request):
     team = Team.objects.get(user=request.user)
     players = Player.objects.filter(team=team)
-    trainings = Training.objects.filter(drill=request.user)
+    trainings = Training.objects.filter(team=team)
     return render(request, 'team/index.html', {'team': team, 'players': players, 'trainings': trainings})
 
 
@@ -70,6 +68,13 @@ def add_stats(request, player_id):
         new_stats.player_id = player_id
         new_stats.save()
     return redirect('detail', player_id=player_id)
+
+
+class TeamCreate(LoginRequiredMixin, CreateView):
+    model = Team
+    fields = '__all__'
+
+# make like add_stats
 
 
 class PlayerCreate(LoginRequiredMixin, CreateView):

@@ -31,6 +31,19 @@ DRILLS = [
 ]
 
 
+class Team(models.Model):
+    name = models.CharField(max_length=80)
+    league = models.CharField(max_length=30)
+    division = models.CharField(max_length=10)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.name}"
+
+    def get_absolute_url(self):
+        return reverse('team_index', kwargs={'team_id': self.id})
+
+
 class Training(models.Model):
     drill = models.CharField(
         max_length=3, choices=DRILLS, default=DRILLS[0][0])
@@ -38,22 +51,13 @@ class Training(models.Model):
     date = models.DateField(default=date.today)
     duration = models.IntegerField("Duration (minutes)")
     completed = models.BooleanField(default=False)
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.drill} Training, {self.date}"
 
     def get_absolute_url(self):
         return reverse('training_detail', kwargs={'pk': self.id})
-
-
-class Team(models.Model):
-    name = models.CharField(max_length=80)
-    league = models.CharField(max_length=30)
-    division = models.CharField(max_length=10)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"{self.name}"
 
 
 class Player(models.Model):

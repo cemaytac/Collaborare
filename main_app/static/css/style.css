@@ -2,14 +2,32 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  background-image: url('https://image.freepik.com/free-photo/soccer-field-grass-conner-pattern-fresh-green-grass-football_43525-785.jpg');
+  background-image: url(../images/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: row;
+}
+
+h1.main {
+  font-size: 60px;
 }
 
 main {
   flex: 1 0 auto;
+  color: black;
+  font-size: 16px;
 }
 
 footer.page-footer {
   padding-top: 0;
   text-align: right;
+}
+
+footer {
+  color: white;
 }

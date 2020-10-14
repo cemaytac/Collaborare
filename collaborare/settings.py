@@ -127,6 +127,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-LOGIN_REDIRECT_URL = '/players/'
+LOGIN_REDIRECT_URL = '/team/'
 
 LOGOUT_REDIRECT_URL = '/'
