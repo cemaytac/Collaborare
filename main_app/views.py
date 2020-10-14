@@ -70,6 +70,10 @@ def add_stats(request, player_id):
     return redirect('detail', player_id=player_id)
 
 
+# def view_stats(request, player_id):
+#     form = StatForm(request.GET)
+
+
 class TeamCreate(LoginRequiredMixin, CreateView):
     model = Team
     fields = '__all__'

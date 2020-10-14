@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load render_table from django_tables2 %}
 
 <h1 class='player-details-header'>Player Details</h1>
 
@@ -24,37 +25,52 @@
     </div>
   </div>
 </div>
-<div class="form-group">
+<div class="card">
   <form action="{% url 'add_stats' player.id %}" method="post">
     {% csrf_token %}
     {{ stat_form.as_p }}
     <input type="submit" class="btn" value="Add Stat">
   </form>
-  <table class="table table-striped">
-    <thead>
-      <tr>
+  <div class='stat-table'>
+    <table class="table table-striped">
+      <thead>
+        {% for player in players %}
+        {% if player.position == gk %}
         <th scope="col">Appearance Date</th>
-        <th scope="col">Goals</th>
-        <th scope="col">Assists</th>
-        <th scope="col">Shots</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for stat in player.stat_set.all %}
-      <tr>
-        <td scope="row">{{stat.date}}</td>
-        <td scope="row">{{stat.goals}}</td>
-        <td scope="row">{{stat.assists}}</td>
-        <td scope="row">{{stat.shots}}</td>
-
-      </tr>
+        <th scope="col">Clean Sheet</th>
+        {% else %}
+        <tr>
+          <th scope="col">Appearance Date</th>
+          <th scope="col">Goals</th>
+          <th scope="col">Assists</th>
+          <th scope="col">Shots</th>
+        </tr>
+      </thead>
+      {% endif %}
       {% endfor %}
-    </tbody>
-  </table>
+      <tbody>
+        {% for stat in player.stat_set.all %}
+        {% if player.position == gk %}
+        <tr>
+          <td scope="row">{{stat.date}}</td>
+          <td scope="row">{{stat.clean_sheets}}</td>
+        </tr>
+        {% else %}
+        <tr>
+          <td scope="row">{{stat.date}}</td>
+          <td scope="row">{{stat.goals}}</td>
+          <td scope="row">{{stat.assists}}</td>
+          <td scope="row">{{stat.shots}}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 </div>
 <hr>
-<div class="container">
-  <div class="col s6">
+<div class="card">
+  <div class="card-content">
     <h3>{{ player.last_name }}'s Training</h3>
     {% if player.training.count %}
     {% for training in player.training.all %}
@@ -70,7 +86,7 @@
     <h5>No training scheduled yet</h5>
     {% endif %}
   </div>
-  <div class="container">
+  <div class="card">
     <h3>All Scheduled Trainings</h3>
     {% if training.count %}
     {% for training in training.all %}
@@ -81,10 +97,10 @@
         </span>
       </div>
     </div>
-    <div class="form-group">
+    <div class="card">
       <form action="{% url 'assoc_training' player.id training.id %}" method="post">
         {% csrf_token %}
-        <button type="submit" class="btn">Add</button>
+        <button type="submit" class="btn btn-primary">Add</button>
       </form>
     </div>
   </div>
