@@ -33,10 +33,11 @@
   <div class='stat-table'>
     <table class="table table-striped">
       <thead>
-        {% for player in players %}
-        {% if player.position == gk %}
-        <th scope="col">Appearance Date</th>
-        <th scope="col">Clean Sheet</th>
+        {% if player.position == 'GK' %}
+        <tr>
+          <th scope="col">Appearance Date</th>
+          <th scope="col">Clean Sheet</th>
+        </tr>
         {% else %}
         <tr>
           <th scope="col">Appearance Date</th>
@@ -46,10 +47,9 @@
         </tr>
       </thead>
       {% endif %}
-      {% endfor %}
       <tbody>
         {% for stat in player.stat_set.all %}
-        {% if player.position == gk %}
+        {% if player.position == 'GK' %}
         <tr>
           <td scope="row">{{stat.date}}</td>
           <td scope="row">{{stat.clean_sheets}}</td>
