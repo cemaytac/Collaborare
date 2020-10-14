@@ -6,6 +6,7 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('team/', views.team_index, name='team_index'),
     path('team/create', views.TeamCreate.as_view(), name='team_create'),
+    path('team/<int:team_id>/', views.team_detail, name='team_detail'),
     path('team/players/', views.players_index, name='index'),
     path('team/players/<int:player_id>/', views.players_detail, name='detail'),
     path('team/players/create/', views.PlayerCreate.as_view(), name='players_create'),
