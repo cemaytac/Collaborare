@@ -1,1 +1,1 @@
-web: gunicorn <collaborare>.wsgi
+web: gunicorn collaborare.wsgi
