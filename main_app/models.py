@@ -95,4 +95,4 @@ class Stat(models.Model):
         ordering = ['-date']
 
     def __str__(self):
-        return f"{self.player.last_name} scored {self.goals} for {self.player.team.name}"
+        return f"{self.player.last_name} scored {self.goals} for {self.player.team.name} on {self.date}"

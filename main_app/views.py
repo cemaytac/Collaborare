@@ -38,14 +38,6 @@ def about(request):
 
 
 @login_required
-def team_index(request):
-    team = Team.objects.get(user=request.user)
-    players = Player.objects.filter(team=team)
-    trainings = Training.objects.filter(team=team)
-    return render(request, 'team/index.html', {'team': team, 'players': players, 'trainings': trainings})
-
-
-@login_required
 def players_index(request):
     players = Player.objects.all()
     return render(request, 'players/index.html', {'players': players})
@@ -58,6 +50,20 @@ def players_detail(request, player_id):
         id__in=player.training.all().values_list('id'))
     stat_form = StatForm()
     return render(request, 'players/detail.html', {'player': player, 'stat_form': stat_form, 'training': training_player_doesnt_have})
+
+
+@login_required
+def team_detail(request, team_id):
+    team = Team.objects.get(id=team_id)
+    players = Player.objects.filter(team=team)
+    trainings = Training.objects.filter(team=team)
+    return render(request, 'team/detail.html', {'team': team, 'players': players, 'trainings': trainings})
+
+
+@login_required
+def team_index(request):
+    teams = Team.objects.filter(user=request.user)
+    return render(request, 'team/index.html', {'teams': teams})
 
 
 @login_required
