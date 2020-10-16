@@ -15,7 +15,7 @@
   - [Special Thanks](#special-thanks)
 
 ## Concept
-This project was created with the goal of making coaching simplier. As someone who used to play in an amateur soccer team, I know how har it is for a coach to keep track of his players. The app allows the user to create teams and store their players' information and their training schedules.
+This app was designed with the goal of making coaching football (or soccer for you Americans) simpler. As someone who used to play in an amateur soccer team, I know how hard it is for a coach to keep track of all his players. The app allows the coach to create teams and store their players' information and their training schedules. Collaborare can also be useful for games like FIFA and Football Manager since keeping track of your virtual players can help you organize your team in game. 
 
 ## Screenshots
 ![addplayer](https://i.imgur.com/LOE4zZ2.png/to/img.png)
