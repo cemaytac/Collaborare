@@ -4,8 +4,8 @@
 
 <h1>{{team.name}} Page</h1>
 <h1>Player List</h1>
-{% for player in players %}
 
+{% for player in players %}
 <div class="card">
   <div class="card-content">
     <span class="card-title">
@@ -22,16 +22,18 @@
 
 <h1>Training List</h1>
 {% for training in trainings %}
-<a href="{% url 'training_detail' training.id %}">
-  <div class="card">
-    <div class="card-content">
-      <span class="card-title">{{ training.drill }}</span>
-      <p>Duration: {{training.duration}} minutes</p>
-      <p>Completed? {{training.completed}}</p>
-      <p>Team: {{training.team}}</p>
-    </div>
+<div class="card">
+  <div class="card-content">
+    <a href="{% url 'training_detail' training.id %}">
+      <span class="card-title">
+        <h2>{{ training.drill }}</h2>
+        <p>Duration: {{training.duration}} minutes</p>
+        <p>Completed? {{training.completed}}</p>
+        <p>Team: {{training.team}}</p>
+    </a>
+    </span>
   </div>
-</a>
+</div>
 
 {% endfor %}
 

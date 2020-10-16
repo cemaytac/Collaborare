@@ -11,7 +11,7 @@
       <a href="{% url 'training_detail' training.id %}">
         <h2>{{ training.drill }}</h2>
         <p>Duration: {{training.duration}} minutes</p>
-        <p>Completed? {{training.completed}}</p>
+        <p>Completed? {{training.completed|yesno:"Yes,No"}}</p>
         <p>Team: {{training.team}}</p>
       </a>
     </span>

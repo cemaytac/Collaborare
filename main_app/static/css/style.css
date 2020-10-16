@@ -13,7 +13,7 @@ a {
 }
 
 h1 {
-  color: #2C2726;
+  color: #CA4C16;
   font-size: 60px;
   margin: 10px;
 }
@@ -25,7 +25,7 @@ h1 {
 
 main {
   flex: 1 0 auto;
-  color: #ef946c;
+  color: #2C2726;
   font-size: 20px;
 }
 
@@ -45,15 +45,16 @@ main {
   margin: 10px;
 }
 
+label {
+  padding : 10px;
+}
+
 footer.page-footer {
-  padding-top: 0;
+  padding-top: 10px;
+  padding-right: 10px;
   text-align: right;
 }
 
 footer {
   color: white;
-}
-
-label {
-  padding : 10px;
 }
