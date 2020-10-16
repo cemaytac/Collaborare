@@ -1,16 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
+
 <h1>Training List</h1>
+
 {% for training in training_list %}
-<a href="{% url 'training_detail' training.id %}">
-  <div class="card">
-    <div class="card-content">
-      <span class="card-title">{{ training.drill }}</span>
-      <p>Duration: {{training.duration}} minutes</p>
-      <p>Completed? {{training.completed}}</p>
-      <p>Team: {{training.team}}</p>
-    </div>
+
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">
+      <a href="{% url 'training_detail' training.id %}">
+        <h2>{{ training.drill }}</h2>
+        <p>Duration: {{training.duration}} minutes</p>
+        <p>Completed? {{training.completed}}</p>
+        <p>Team: {{training.team}}</p>
+      </a>
+    </span>
   </div>
-</a>
+</div>
 {% endfor %}
 {% endblock %}

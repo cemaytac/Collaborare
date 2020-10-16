@@ -25,7 +25,7 @@ h1 {
 
 main {
   flex: 1 0 auto;
-  color: black;
+  color: #ef946c;
   font-size: 20px;
 }
 
@@ -37,9 +37,10 @@ main {
   width: 22em;
 }
 
-.button.div {
+.button-div {
+  width: 12em;
   display: flex;
-  flex-wrap: wrap;
+  justify-content: space-evenly;
   padding: 10px;
   margin: 10px;
 }
@@ -51,4 +52,8 @@ footer.page-footer {
 
 footer {
   color: white;
+}
+
+label {
+  padding : 10px;
 }
