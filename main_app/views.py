@@ -53,17 +53,17 @@ def players_detail(request, player_id):
 
 
 @login_required
+def team_index(request):
+    teams = Team.objects.filter(user=request.user)
+    return render(request, 'team/index.html', {'teams': teams})
+
+
+@login_required
 def team_detail(request, team_id):
     team = Team.objects.get(id=team_id)
     players = Player.objects.filter(team=team)
     trainings = Training.objects.filter(team=team)
     return render(request, 'team/detail.html', {'team': team, 'players': players, 'trainings': trainings})
-
-
-@login_required
-def team_index(request):
-    teams = Team.objects.filter(user=request.user)
-    return render(request, 'team/index.html', {'teams': teams})
 
 
 @login_required
@@ -76,15 +76,19 @@ def add_stats(request, player_id):
     return redirect('detail', player_id=player_id)
 
 
-# def view_stats(request, player_id):
-#     form = StatForm(request.GET)
+# @login_required
+# def team_create(request, user):
+#     form = TeamForm(request.POST)
+#     if form.is_valid():
+#         new_team = form.save(commit=False)
+#         user = new_team.user
+#         new_team.save()
+#     return redirect('team/create.html', user=user)
 
 
 class TeamCreate(LoginRequiredMixin, CreateView):
     model = Team
     fields = '__all__'
-
-# make like add_stats
 
 
 class PlayerCreate(LoginRequiredMixin, CreateView):

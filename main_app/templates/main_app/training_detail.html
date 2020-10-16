@@ -6,9 +6,10 @@
     <div class="card">
       <div class="card-content">
         <h1>{{ training.drill }}, {{training.date}}</h1>
+        <h2>Team: {{training.team}}</h2>
         <p>Duration: {{training.duration}} minutes</p>
         <p>Description: {{training.description}}</p>
-        <p>Completed? {{training.completed}}</p>
+        <p>Completed? {{training.completed|yesno:"Yes,No"}}</p>
       </div>
       <div class="card-action">
         <a href="{% url 'training_update' training.id %}">Edit</a>
