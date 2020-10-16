@@ -89,6 +89,7 @@ def add_stats(request, player_id):
 class TeamCreate(LoginRequiredMixin, CreateView):
     model = Team
     fields = '__all__'
+    success_url = '/team/'
 
 
 class PlayerCreate(LoginRequiredMixin, CreateView):
