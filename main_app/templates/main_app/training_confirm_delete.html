@@ -4,7 +4,9 @@
 <h4>Are you sure you want to delete <span class="teal-text">{{ object.drill }}</span>?</h4>
 <form action="" method="POST">
   {% csrf_token %}
-  <input type="submit" value="Yes - Delete!" class="btn">
-  <a href="{% url 'training_detail' object.id %}">Cancel</a>
+  <div class='button-div'>
+    <input type="submit" value="Yes - Delete!" class="btn">
+    <a href="{% url 'training_detail' object.id %}">Cancel</a>
+  </div>
 </form>
 {% endblock %}

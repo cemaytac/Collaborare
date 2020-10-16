@@ -8,25 +8,40 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
+a {
+  color: #38A6E5;
+}
+
+h1 {
+  color: #2C2726;
+  font-size: 60px;
+  margin: 10px;
+}
+
 .nav-item {
   display: flex;
   flex-direction: row;
 }
 
-h1.main {
-  font-size: 60px;
-}
-
 main {
   flex: 1 0 auto;
   color: black;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .card {
   display: flex;
-  flex-direction: row;
-  width: 50%;
+  background-color: #E8F1F2;
+  padding: 10px;
+  margin: 10px;
+  width: 22em;
+}
+
+.button.div {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  margin: 10px;
 }
 
 footer.page-footer {

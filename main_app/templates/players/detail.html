@@ -28,7 +28,9 @@
   <form action="{% url 'add_stats' player.id %}" method="post">
     {% csrf_token %}
     {{ stat_form.as_p }}
-    <input type="submit" class="btn" value="Add Stat">
+    <div class='button-div'>
+      <input type="submit" class="btn btn-primary" id='btn-primary' value="Add Stat">
+    </div>
   </form>
   <div class='stat-table'>
     <table class="table table-striped">
