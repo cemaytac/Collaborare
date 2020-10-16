@@ -10,9 +10,9 @@
     <span class="card-title">
       <a href="{% url 'team_detail' team.id %}" class="team-title">
         <h2 class='team-name'>{{ team.name }}</h2>
-        <h4 class='team-name'>{{ team.league }}</h4>
-        <h4 class='team-name'>{{ team.division }}</h4>
       </a>
+      <h4 class='team-name'>League: {{ team.league }}</h4>
+      <h4 class='team-name'>Division: {{ team.division }}</h4>
     </span>
   </div>
 </div>
