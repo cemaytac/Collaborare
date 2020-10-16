@@ -6,8 +6,10 @@
 <form method="post" action="{% url 'login' %}" class='form-group'>
   {% csrf_token %}
   {{ form.as_p }}
-  <input type="submit" class="btn" value="login">
-  <input type="hidden" name="next" value="{{ next }}">
+  <div class='button-div'>
+    <input type="submit" class="btn btn-primary" value="Log In" id='button'>
+    <input type="hidden" name="next" value="{{ next }}">
+  </div>
 </form>
 
 {% endblock %}

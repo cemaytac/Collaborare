@@ -14,24 +14,25 @@ a {
 
 h1 {
   color: #CA4C16;
-  font-size: 60px;
+  font-size: 50px;
   margin: 10px;
 }
 
 .nav-item {
   display: flex;
   flex-direction: row;
+  color: #E8F1F2;
 }
 
 main {
   flex: 1 0 auto;
-  color: #2C2726;
+  color: #E8F1F2;
   font-size: 20px;
 }
 
 .card {
   display: flex;
-  background-color: #E8F1F2;
+  background-color: #2C2726;
   padding: 10px;
   margin: 10px;
   width: 22em;
@@ -57,5 +58,9 @@ footer.page-footer {
 }
 
 footer {
-  color: white;
+  color: #E8F1F2;
+}
+
+ul {
+  background-color: ;
 }
